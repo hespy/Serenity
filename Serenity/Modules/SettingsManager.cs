@@ -24,10 +24,10 @@ namespace Serenity.Modules
         {
             public AimbotSettings()
             {
-                AimKey = 0x02;
+                AimKey = 0x04;
                 AntiShake = false;
                 ForceHeadshot = false;
-                TargetColor = Color.FromArgb(255, 0, 19);
+                TargetColor = Color.FromArgb(168, 44, 46);
             }
 
             public Color TargetColor { get; set; }

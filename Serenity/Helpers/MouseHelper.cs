@@ -59,13 +59,13 @@ namespace Serenity.Helpers
                 Y = Math.Abs(crosshair.Y - destination.Y)
             };
 
-            stepCount.X = 5;
+            stepCount.X = 10;
             stepCount.Y = 3;
 
             // X-axis.
             if (difference.X < 10)
             {
-                stepCount.X = 1;
+                stepCount.X = 2;
 
                 if (SettingsManager.Aimbot.AntiShake)
                 {
@@ -74,7 +74,7 @@ namespace Serenity.Helpers
             }
             else if (difference.X < 40)
             {
-                stepCount.X = 5;
+                stepCount.X = 10;
                 Thread.Sleep(1);
             }
 

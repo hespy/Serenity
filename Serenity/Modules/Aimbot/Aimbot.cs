@@ -27,8 +27,8 @@ namespace Serenity.Modules.Aimbot
             // Initialize Fovs.
             Fovs = new List<Fov>
             {
-                new Fov { Resolution = new Point(1920, 1080), FieldOfView = new Rectangle(775, 410, 370, 185), RangeValues = new Point(45, 56), Tolerance = new Point(2, 2) },
-                new Fov { Resolution = new Point(1280, 720), FieldOfView = new Rectangle(500, 300, 245, 120), RangeValues = new Point(30, 42), Tolerance = new Point(2, 2) }
+                new Fov { Resolution = new Point(1920, 1080), FieldOfView = new Rectangle(775, 410, 370, 185), RangeValues = new Point(45, 56), Tolerance = new Point(2, 2) }
+                //new Fov { Resolution = new Point(1280, 720), FieldOfView = new Rectangle(500, 300, 245, 120), RangeValues = new Point(30, 42), Tolerance = new Point(2, 2) }
             };
 
             MyFov = Fovs.FirstOrDefault(x => x.Resolution == new Point(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height));
@@ -60,13 +60,12 @@ namespace Serenity.Modules.Aimbot
                     var screenCapture = ScreenHelper.GetScreenCapture(MyFov.FieldOfView);
 
                     // Search for a target.
-                    var coordinates = SearchHelper.SearchColor(ref screenCapture, SettingsManager.Aimbot.TargetColor);
+                    var coordinates = SearchHelper.SearchColor(ref screenCapture, SettingsManager.Aimbot.TargetColor, 5);
 
                     // Only continue if a healthbar was found.
                     if (coordinates.X != 0 || coordinates.Y != 0)
                     {
                         coordinates = ScreenHelper.GetAbsoluteCoordinates(coordinates, MyFov.FieldOfView);
-
                         MouseHelper.Move(ref MyFov, coordinates, SettingsManager.Aimbot.ForceHeadshot);
                     }
 
